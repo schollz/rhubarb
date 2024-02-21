@@ -1,5 +1,3 @@
-
-
 (
 s.waitForBoot({
 	Routine {
@@ -43,9 +41,7 @@ s.waitForBoot({
 			//drums = AnalogTape.ar(drums,0.9,0.7,0.8,2);
 			//synth = SelectX.ar(LFNoise2.kr(1/3).range(0.5,0.8),[synth,Fverb.ar(synth[0],synth[1],200,tail_density: LFNoise2.kr(1/3).range(50,90),decay: LFNoise2.kr(1/3).range(50,70))]);
 			synth = SelectX.ar(LFNoise2.kr(1/3).range(0.5,0.8),[synth,FreeVerb2.ar(synth[0],synth[1],1,0.9,0.1)]);
-			synth = CompanderD.ar(
-				in: synth,control: drums,thresh: 0.8,slopeBelow: 1.0,slopeAbove: 0.1,clampTime: 0.01,relaxTime: 0.1
-			);
+			synth = CompanderD.ar(in: synth,control: drums,thresh: 0.8,slopeBelow: 1.0,slopeAbove: 0.1,clampTime: 0.01,relaxTime: 0.1);
 			snd = (synth*0.neg.dbamp*(1-amp)) + (drums*2.neg.dbamp);
 			ReplaceOut.ar(0,snd*12.neg.dbamp);
 		}).add;
