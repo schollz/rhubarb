@@ -22,7 +22,7 @@ s.waitForBoot({
 			var xfade=0.2;
 			var freq= [note+rrand(-0.05,0.05),note+Rand(-0.05,0.05),note+Rand(-0.05,0.05)].midicps;
 			var snd  = Saw.ar(freq);
-			snd = MoogFF.ar(snd,freq*Rand(2,4),2);
+			snd = RLPF.ar(snd,freq*Rand(2,4),0.707);
 			snd = Splay.ar(snd);
 			snd = snd * EnvGen.ar(Env.new([0,1,1,0],[xfade,(dur-xfade),xfade*rrand(1,10)]),doneAction:2);
 			Out.ar(3,snd);
